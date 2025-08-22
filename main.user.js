@@ -2,7 +2,7 @@
 // @name         uOLibraryAutoRedirect
 // @version      1
 // @description  Auto redirect database links to uOttawa library proxy.
-// @authoe       FrzMtrsprt
+// @author       FrzMtrsprt
 // @homepage     https://github.com/FrzMtrsprt/uOLibraryAutoRedirect
 // @include      https://scholar.google.*/*
 // ==/UserScript==
