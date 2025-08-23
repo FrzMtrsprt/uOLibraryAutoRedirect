@@ -12,10 +12,21 @@
 
     const proxyPrefix = "https://login.proxy.bib.uottawa.ca/login?url=";
 
+    const blacklist = [
+        `^${proxyPrefix}.*`,
+        '^\/.*',
+        '^#.*',
+        '^javascript:.*',
+        '.*scholar\.google.*',
+        '.*arxiv\.org.*',
+        '.*openaccess.*',
+    ];
+
     function rewriteLinks() {
         document.querySelectorAll('a').forEach(link => {
             const href = link.getAttribute('href');
-            if (!href || href.startsWith('/') || href.startsWith('#') || href.startsWith('javascript') || href.includes('scholar.google') || href.startsWith(proxyPrefix)) {
+            if (!href || blacklist.some(pattern => new RegExp(pattern).test(href))) {
+                console.log('Skipping link:', href);
                 return;
             }
             link.setAttribute('href', proxyPrefix + href);
